@@ -10,7 +10,7 @@ const MODULES = {
 };
 
 export default function About() {
-  const startYear = 1772;
+  const startYear = 2023;
   const currentYear = new Date().getFullYear();
   const experience = currentYear - startYear;
 
