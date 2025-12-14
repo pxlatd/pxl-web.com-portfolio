@@ -33,7 +33,7 @@ export default function Contact() {
             <span className='text-cyan-500'>$</span> ./initiate_contact.sh
           </h2>
           <p className='text-slate-400 font-mono text-sm'>
-            Enter your credentials to establish a secure connection.
+            Enter your credentials to establish a connection.
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export default function Contact() {
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       rows={4}
                       className='bg-transparent border-none outline-none text-white w-full placeholder-slate-600 focus:ring-0 p-0 resize-none'
-                      placeholder='Type your encrypted message here..._'
+                      placeholder='Type your message here...'
                     />
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export default function Contact() {
                       className='group flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors'
                     >
                       <span className='text-green-400'>root@portfolio:~$</span>
-                      <span>./send_message.sh --force</span>
+                      <span>./send_message.sh --force --click-here-to-send</span>
                       <div className='w-2.5 h-4 bg-cyan-500/50 animate-pulse ml-1' />
                     </motion.button>
                   )}
@@ -179,7 +179,7 @@ export default function Contact() {
 
         {/* Footer Links */}
         <footer className='mt-20 pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between text-slate-500 text-sm font-mono'>
-          <p>&copy; {new Date().getFullYear()} System. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Pixelated. All rights reserved.</p>
           <div className='flex items-center gap-6 mt-4 md:mt-0'>
             <a href='https://github.com' target='_blank' rel='noopener noreferrer' className='hover:text-cyan-400 transition-colors flex items-center gap-2'>
               <Github className='w-4 h-4' /> github

@@ -10,7 +10,7 @@ const MODULES = {
 };
 
 export default function About() {
-  const startYear = 2018;
+  const startYear = 1772;
   const currentYear = new Date().getFullYear();
   const experience = currentYear - startYear;
 
@@ -29,7 +29,7 @@ export default function About() {
           >
             <span className='text-cyan-500'>01.</span>
             <span className='bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent'>
-              System Diagnostics
+              My Langs
             </span>
             <div className='h-px bg-slate-800 flex-grow ml-4' />
           </motion.h2>
@@ -52,15 +52,15 @@ export default function About() {
                   {">"} INITIATING USER_BIO_SEQUENCE...
                 </p>
                 <p>
-                  <span className='text-cyan-500'>current_role:</span> "Full Stack Architect"<br/>
-                  <span className='text-cyan-500'>location:</span> "Cyberspace / Remote"<br/>
-                  <span className='text-cyan-500'>mission:</span> "Building scalable digital infrastructure."
+                  <span className='text-cyan-500'>current_role:</span> "Full Stack Dev"<br/>
+                  <span className='text-cyan-500'>location:</span> "Remote"<br/>
+                  <span className='text-cyan-500'>mission:</span> "Building scalable code meant for consumers and beyond."
                 </p>
                 <p>
                   {">"} POLYGLOT_DETECTED: TRUE
                 </p>
                 <p className='text-slate-300'>
-                  I don't just write code; I architect solutions. With a deep understanding of low-level systems and high-level abstractions, I bridge the gap between complex requirements and elegant execution.
+                  I create code that that solves solutions. With a large understanding of low and high level systems, I fix the trench between big requirements and beautiful execution.
                 </p>
               </div>
 
@@ -71,7 +71,7 @@ export default function About() {
                 </div>
                 <div className='p-3 bg-slate-950 rounded border border-slate-800/50'>
                   <div className='text-xs text-slate-500 font-mono mb-1'>PROJECTS</div>
-                  <div className='text-xl font-bold text-white'>50+</div>
+                  <div className='text-xl font-bold text-white'>None yet.. ^^'</div>
                 </div>
               </div>
             </div>

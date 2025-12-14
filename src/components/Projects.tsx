@@ -3,25 +3,25 @@ import { ExternalLink, Github, Code2, Terminal, Cpu } from 'lucide-react';
 
 const PROJECTS = [
   {
-    title: 'Project Alpha',
-    description: 'A robust full-stack application demonstrating scalable architecture and real-time data processing capabilities.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
+    title: 'Project Placeholder',
+    description: '',
+    tags: [],
     links: { demo: '#', github: '#' },
     icon: <Terminal className='w-10 h-10 text-emerald-400' />,
     gradient: 'from-emerald-500/20 to-cyan-500/20'
   },
   {
-    title: 'Project Beta',
-    description: 'An experimental interface exploring new frontend paradigms and advanced state management patterns.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
+    title: 'Project Placeholder',
+    description: '',
+    tags: [],
     links: { demo: '#', github: '#' },
     icon: <Cpu className='w-10 h-10 text-purple-400' />,
     gradient: 'from-purple-500/20 to-pink-500/20'
   },
   {
-    title: 'Project Gamma',
-    description: 'High-performance backend service designed for microservices communication and distributed systems.',
-    tags: ['Go', 'gRPC', 'Redis', 'Kubernetes'],
+    title: 'Project Placeholder',
+    description: '',
+    tags: [],
     links: { demo: '#', github: '#' },
     icon: <Code2 className='w-10 h-10 text-amber-400' />,
     gradient: 'from-amber-500/20 to-orange-500/20'

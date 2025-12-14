@@ -124,7 +124,7 @@ export default function Hero() {
             <div className='flex items-center justify-center gap-2 mb-4'>
               <div className='h-px w-8 bg-cyan-500/50' />
               <span className='text-cyan-400 font-mono text-sm tracking-widest uppercase'>
-                System Online
+                Website ready
               </span>
               <div className='h-px w-8 bg-cyan-500/50' />
             </div>
@@ -152,7 +152,7 @@ export default function Hero() {
             className='text-slate-400 text-xl max-w-2xl mx-auto leading-relaxed'
           >
             I break down complex problems and reassemble them into elegant interfaces.
-            Welcome to my digital workspace.
+            Welcome to my portfolio.
           </motion.p>
 
           <motion.div 
