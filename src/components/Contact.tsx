@@ -167,7 +167,7 @@ export default function Contact() {
                       className='flex items-center gap-2 text-emerald-400'
                     >
                       <CheckCircle2 className='w-4 h-4' />
-                      <span>Form sent.</span>
+                      <span>Form sent!</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
