@@ -1,27 +1,42 @@
 ﻿import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, CheckCircle2, Loader2, Mail, Github, Linkedin } from 'lucide-react';
+import { Terminal, CheckCircle2, Loader2, Mail, Github, Linkedin, AlertCircle } from 'lucide-react';
+
+// REPLACE THIS WITH YOUR FORMSPREE ENDPOINT
+const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'processing' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('processing');
 
-    // Simulate terminal processing time for effect
-    setTimeout(() => {
-      const subject = `Portfolio Contact from ${formState.name}`;
-      const body = `Name: ${formState.name}%0D%0AEmail: ${formState.email}%0D%0A%0D%0A${formState.message}`;
-      
-      // Open default email client
-      window.location.href = `mailto:contact@example.com?subject=${subject}&body=${body}`;
-      
-      setStatus('success');
-      setFormState({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formState)
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormState({ name: '', email: '', message: '' });
+        // Reset status after 5 seconds so they can send another if needed
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
+    }
   };
 
   return (
@@ -33,7 +48,7 @@ export default function Contact() {
             <span className='text-cyan-500'>$</span> ./initiate_contact.sh
           </h2>
           <p className='text-slate-400 font-mono text-sm'>
-            Enter your credentials to communicate.
+            Enter your credentials to establish a secure connection.
           </p>
         </div>
 
@@ -66,13 +81,14 @@ export default function Contact() {
                     <span className='mr-2 text-slate-500'>{'>'}</span>
                     <input
                       id='name-input'
+                      name='name'
                       type='text'
                       required
                       disabled={status === 'processing'}
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       className='bg-transparent border-none outline-none text-white w-full placeholder-slate-600 focus:ring-0 p-0'
-                      placeholder=''
+                      placeholder='_'
                       autoComplete='off'
                     />
                   </div>
@@ -91,13 +107,14 @@ export default function Contact() {
                     <span className='mr-2 text-slate-500'>{'>'}</span>
                     <input
                       id='email-input'
+                      name='email'
                       type='email'
                       required
                       disabled={status === 'processing'}
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       className='bg-transparent border-none outline-none text-white w-full placeholder-slate-600 focus:ring-0 p-0'
-                      placeholder=''
+                      placeholder='_'
                       autoComplete='off'
                     />
                   </div>
@@ -115,16 +132,17 @@ export default function Contact() {
                     <span className='text-blue-400'>input_message</span>
                   </div>
                   <div className='flex items-start'>
-                    <span className='mr-2 text-slate-500'>{'>'}</span>
+                    <span className='mr-2 text-slate-500 mt-1'>{'>'}</span>
                     <textarea
                       id='message-input'
+                      name='message'
                       required
                       disabled={status === 'processing'}
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       rows={4}
                       className='bg-transparent border-none outline-none text-white w-full placeholder-slate-600 focus:ring-0 p-0 resize-none'
-                      placeholder='Type your message here...'
+                      placeholder='Type your encrypted message here..._'
                     />
                   </div>
                 </div>
@@ -142,7 +160,7 @@ export default function Contact() {
                       className='group flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors'
                     >
                       <span className='text-green-400'>root@portfolio:~$</span>
-                      <span>./send_message.sh --force --click-here-to-send</span>
+                      <span>./send_message.sh --force</span>
                       <div className='w-2.5 h-4 bg-cyan-500/50 animate-pulse ml-1' />
                     </motion.button>
                   )}
@@ -155,7 +173,7 @@ export default function Contact() {
                       className='flex items-center gap-2 text-slate-400'
                     >
                       <Loader2 className='w-4 h-4 animate-spin text-cyan-500' />
-                      <span>Sending form...</span>
+                      <span>Encrypting and transmitting payload...</span>
                     </motion.div>
                   )}
 
@@ -167,7 +185,19 @@ export default function Contact() {
                       className='flex items-center gap-2 text-emerald-400'
                     >
                       <CheckCircle2 className='w-4 h-4' />
-                      <span>Form sent!</span>
+                      <span>Transmission successful. Connection terminated.</span>
+                    </motion.div>
+                  )}
+
+                  {status === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className='flex items-center gap-2 text-red-400'
+                    >
+                      <AlertCircle className='w-4 h-4' />
+                      <span>Transmission failed. Check network integrity.</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
