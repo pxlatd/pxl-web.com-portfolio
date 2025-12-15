@@ -31,7 +31,7 @@ export default function Navbar() {
             <a href='https://github.com/pxlatd' target='_blank' rel='noopener noreferrer' className='text-slate-400 hover:text-white transition-colors'>
               <Github className='w-5 h-5' />
             </a>
-            <a href='https://linkedin.com' target='_blank' rel='noopener noreferrer' className='text-slate-400 hover:text-white transition-colors'>
+            <a href='https://www.linkedin.com/in/pixel-ated-3b529a394/' target='_blank' rel='noopener noreferrer' className='text-slate-400 hover:text-white transition-colors'>
               <Linkedin className='w-5 h-5' />
             </a>
             <a href='mailto:james_jangalang@pxl-web.com' className='text-slate-400 hover:text-white transition-colors'>
