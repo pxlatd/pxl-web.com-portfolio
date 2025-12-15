@@ -9,27 +9,43 @@ const MODULES = {
   DevOps: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Azure', 'Terraform', 'Ansible', 'Jenkins', 'GitHub Actions', 'CircleCI', 'Linux', 'Bash', 'Prometheus', 'Grafana']
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
+
 export default function About() {
   const startYear = 2023;
   const currentYear = new Date().getFullYear();
   const experience = currentYear - startYear;
 
   return (
-    <section id='about' className='py-32 bg-slate-950 relative'>
-      {/* Background Grid */}
-      <div className='absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none' />
-
+    <section id='about' className='py-32 bg-transparent relative'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='mb-16'>
           <motion.h2 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className='text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3'
+            className='text-3xl md:text-4xl font-extrabold mb-4 flex items-baseline gap-3'
           >
             <span className='text-cyan-500'>01.</span>
-            <span className='bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent'>
-              My Langs
+            <span className='bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent inline-block pb-6 leading-normal'>
+              My langs
             </span>
             <div className='h-px bg-slate-800 flex-grow ml-4' />
           </motion.h2>
@@ -38,7 +54,13 @@ export default function About() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-20'>
           {/* Status Panel (About Text) */}
           <div className='lg:col-span-1 space-y-12'>
-            <div className='bg-slate-900/50 border border-slate-800 rounded-xl p-6 backdrop-blur-sm'>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className='bg-slate-900/50 border border-slate-800 rounded-xl p-6 backdrop-blur-sm'
+            >
               <div className='flex items-center gap-2 mb-6 border-b border-slate-800 pb-4'>
                 <Activity className='w-5 h-5 text-cyan-500' />
                 <span className='font-mono text-sm text-slate-400'>SYSTEM_STATUS</span>
@@ -54,7 +76,7 @@ export default function About() {
                 <p>
                   <span className='text-cyan-500'>current_role:</span> "Full Stack Dev"<br/>
                   <span className='text-cyan-500'>location:</span> "Remote"<br/>
-                  <span className='text-cyan-500'>mission:</span> "Building scalable code meant for consumers and beyond."
+                  <span className='text-cyan-500'>mission:</span> "Building scalable digital infrastructure."
                 </p>
                 <p>
                   {">"} POLYGLOT_DETECTED: TRUE
@@ -71,23 +93,26 @@ export default function About() {
                 </div>
                 <div className='p-3 bg-slate-950 rounded border border-slate-800/50'>
                   <div className='text-xs text-slate-500 font-mono mb-1'>PROJECTS</div>
-                  <div className='text-xl font-bold text-white'>None yet.. ^^'</div>
+                  <div className='text-xl font-bold text-white'>not a lot ^^'</div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Active Modules (Skills) */}
           <div className='lg:col-span-2'>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              {Object.entries(MODULES).map(([category, skills], i) => (
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className='grid grid-cols-1 md:grid-cols-2 gap-6'
+            >
+              {Object.entries(MODULES).map(([category, skills]) => (
                 <motion.div
                   key={category}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`bg-slate-900/30 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/30 transition-colors ${category === 'Languages' ? 'md:col-span-2' : ''}`}
+                  variants={itemVariants}
+                  className={`bg-slate-900/30 border border-slate-800 rounded-xl p-6 hover:border-cyan-500/30 transition-all hover:-translate-y-1 duration-300 ${category === 'Languages' ? 'md:col-span-2' : ''}`}
                 >
                   <div className='flex items-center gap-3 mb-4'>
                     {category === 'Languages' && <Code2 className='w-5 h-5 text-purple-400' />}
@@ -110,7 +135,7 @@ export default function About() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+﻿import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code2, Terminal, Cpu } from 'lucide-react';
 
 const PROJECTS = [
@@ -28,6 +28,25 @@ const PROJECTS = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" as const }
+  }
+};
+
 export default function Projects() {
   return (
     <section id='projects' className='py-32 bg-slate-950 relative overflow-hidden'>
@@ -40,28 +59,31 @@ export default function Projects() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className='text-3xl md:text-4xl font-bold mb-4 flex items-center gap-3'
+            className='text-3xl md:text-4xl font-extrabold mb-4 flex items-baseline gap-3'
           >
             <span className='text-cyan-500'>02.</span>
-            <span className='bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent'>
-              My projects
+            <span className='bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent inline-block pb-6 leading-normal'>
+              My Projects
             </span>
             <div className='h-px bg-slate-800 flex-grow ml-4' />
           </motion.h2>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'
+        >
           {PROJECTS.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              variants={itemVariants}
               className='group relative'
             >
               {/* Card Container */}
-              <div className='relative h-full bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition-colors backdrop-blur-sm'>
+              <div className='relative h-full bg-slate-900/50 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-900/20 backdrop-blur-sm duration-300'>
                 
                 {/* Terminal Header */}
                 <div className='h-8 bg-slate-900 border-b border-slate-800 flex items-center px-4 gap-2'>
@@ -121,7 +143,7 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

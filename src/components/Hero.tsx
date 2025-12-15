@@ -1,8 +1,7 @@
 ﻿import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Database, Layout, Terminal, Cpu, Globe } from 'lucide-react';
 
-// --- Utilities ---
 const CHARS = '-_~=0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 50;
@@ -50,36 +49,12 @@ const ScrambleText = ({ text, className, delay = 0 }: { text: string, className?
 };
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
   return (
     <section 
       id='home' 
-      className='relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 group'
-      onMouseMove={handleMouseMove}
+      className='relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent'
     >
-      {/* --- Interactive Grid Background --- */}
-      <div className='absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none' />
-      
-      <motion.div 
-        className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
-        style={{
-          background: useMotionTemplate`radial-gradient(
-            650px circle at ${mouseX}px ${mouseY}px,
-            rgba(14, 165, 233, 0.15),
-            transparent 80%
-          )`
-        }}
-      />
-
-      {/* --- Floating Tech Particles --- */}
+      {/* Floating Tech Particles */}
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         {[Code2, Database, Layout, Terminal, Cpu, Globe].map((Icon, i) => (
           <motion.div
@@ -114,7 +89,6 @@ export default function Hero() {
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='text-center space-y-12'>
-          {/* --- Scramble Header --- */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -124,7 +98,7 @@ export default function Hero() {
             <div className='flex items-center justify-center gap-2 mb-4'>
               <div className='h-px w-8 bg-cyan-500/50' />
               <span className='text-cyan-400 font-mono text-sm tracking-widest uppercase'>
-                Website ready
+                Website Online
               </span>
               <div className='h-px w-8 bg-cyan-500/50' />
             </div>
@@ -151,8 +125,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 2.5 }}
             className='text-slate-400 text-xl max-w-2xl mx-auto leading-relaxed'
           >
-            I break down complex problems and reassemble them into elegant interfaces.
-            Welcome to my portfolio.
+            I break down complex problems and reassemble them into elegant interfaces. Welcome to my portfolio.
           </motion.p>
 
           <motion.div 

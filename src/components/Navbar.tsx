@@ -11,7 +11,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className='flex items-center gap-2'>
             <Terminal className='w-6 h-6 text-cyan-500' />
-            <span className='text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent'>
+            <span className='text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent inline-block py-2'>
               Pixel
             </span>
           </div>
