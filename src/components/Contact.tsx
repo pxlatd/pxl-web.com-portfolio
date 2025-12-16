@@ -2,8 +2,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, CheckCircle2, Loader2, Mail, Github, Linkedin, AlertCircle } from 'lucide-react';
 
-// REPLACE THIS WITH YOUR FORMSPREE ENDPOINT
-const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+const FORM_ENDPOINT = "https://formspree.io/f/mzznwknl";
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
