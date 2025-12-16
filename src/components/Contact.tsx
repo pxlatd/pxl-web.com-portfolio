@@ -209,15 +209,15 @@ export default function Contact() {
 
         {/* Footer Links */}
         <footer className='mt-20 pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between text-slate-500 text-sm font-mono'>
-          <p>&copy; {new Date().getFullYear()} System. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Pixel. All rights reserved.</p>
           <div className='flex items-center gap-6 mt-4 md:mt-0'>
-            <a href='https://github.com' target='_blank' rel='noopener noreferrer' className='hover:text-cyan-400 transition-colors flex items-center gap-2'>
+            <a href='https://github.com/pxlatd' target='_blank' rel='noopener noreferrer' className='hover:text-cyan-400 transition-colors flex items-center gap-2'>
               <Github className='w-4 h-4' /> github
             </a>
-            <a href='https://linkedin.com' target='_blank' rel='noopener noreferrer' className='hover:text-cyan-400 transition-colors flex items-center gap-2'>
+            <a href='https://www.linkedin.com/in/pixel-ated-3b529a394/' target='_blank' rel='noopener noreferrer' className='hover:text-cyan-400 transition-colors flex items-center gap-2'>
               <Linkedin className='w-4 h-4' /> linkedin
             </a>
-            <a href='mailto:contact@example.com' className='hover:text-cyan-400 transition-colors flex items-center gap-2'>
+            <a href='mailto:james_jangalang@pxl-web.com' className='hover:text-cyan-400 transition-colors flex items-center gap-2'>
               <Mail className='w-4 h-4' /> email
             </a>
           </div>
