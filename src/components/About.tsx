@@ -45,7 +45,7 @@ export default function About() {
           >
             <span className='text-cyan-500'>01.</span>
             <span className='bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent inline-block pb-6 leading-normal'>
-              My langs
+              My Langs
             </span>
             <div className='h-px bg-slate-800 flex-grow ml-4' />
           </motion.h2>
